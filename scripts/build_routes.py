@@ -43,7 +43,14 @@ for category, filename, title in [('words', 'words.csv', '课文'), ('poems', 'p
                     for term, py in zip(terms, groups):
                         check_pinyin(term, py, f'{item_id} 词语 {term}')
             else:
-                check_pinyin(row.get('正文', ''), row.get('正文拼音', ''), f'{item_id} 正文')
+                body, pinyin = row.get('正文', ''), row.get('正文拼音', '')
+                check_pinyin(body, pinyin, f'{item_id} 正文')
+                body_lines, pinyin_lines = body.split('\\n'), pinyin.split('\\n')
+                if pinyin.strip() and len(pinyin_lines) > 1:
+                    if len(body_lines) != len(pinyin_lines):
+                        raise ValueError(f'{item_id}: 正文和拼音的行数不一致')
+                    for line, (body_line, pinyin_line) in enumerate(zip(body_lines, pinyin_lines), 1):
+                        check_pinyin(body_line, pinyin_line, f'{item_id} 第 {line} 行')
             seen.add(item_id)
             routes.append((category, parts))
 for category in ('words', 'poems'):
