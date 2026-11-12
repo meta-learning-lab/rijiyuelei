@@ -14,9 +14,13 @@ def check_pinyin(text, pinyin, context):
     if not pinyin.strip():
         return
     syllables = pinyin.replace('\\n', ' ').split()
-    count = len(re.findall(r'[\u3400-\u9fff]', text))
+    characters = re.findall(r'[\u3400-\u9fff]', text)
+    count = len(characters)
     if len(syllables) != count:
         raise ValueError(f'{context}: {count} 个汉字与 {len(syllables)} 个拼音不对应')
+    for index, (character, syllable) in enumerate(zip(characters, syllables)):
+        if syllable == '_' and (character != '儿' or not index or not syllables[index - 1].endswith('r')):
+            raise ValueError(f'{context}: 儿化占位符的位置不正确')
 
 for category, filename, title in [('words', 'words.csv', '课文'), ('poems', 'poems.csv', '标题')]:
     seen = set()
