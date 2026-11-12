@@ -34,6 +34,8 @@ for category, filename, title in [('words', 'words.csv', '课文'), ('poems', 'p
                 raise ValueError(f'{filename}: URL 字段不能为空或包含路径分隔符: {parts!r}')
             if category == 'words' and not (row.get('汉字', '').strip() or row.get('词语', '').strip()):
                 raise ValueError(f'{filename}: {item_id} 的汉字和词语不能同时为空')
+            if not row.get('核对状态', '').strip():
+                raise ValueError(f'{filename}: {item_id} 缺少核对状态')
             if row['年级'] not in ['一年级','二年级','三年级','四年级','五年级','六年级'] or row['学期'] not in ['上册','下册']:
                 raise ValueError(f'{filename}: {item_id} 的年级或学期不正确')
             if category == 'words':
