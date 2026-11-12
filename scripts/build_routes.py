@@ -8,6 +8,16 @@ root = Path(__file__).resolve().parent.parent
 out = root / 'dist'
 html = (out / 'index.html').read_text(encoding='utf-8')
 routes = []
+
+
+def check_pinyin(text, pinyin, context):
+    if not pinyin.strip():
+        return
+    syllables = pinyin.replace('\\n', ' ').split()
+    count = len(re.findall(r'[\u3400-\u9fff]', text))
+    if len(syllables) != count:
+        raise ValueError(f'{context}: {count} 个汉字与 {len(syllables)} 个拼音不对应')
+
 for category, filename, title in [('words', 'words.csv', '课文'), ('poems', 'poems.csv', '标题')]:
     seen = set()
     with (out / filename).open(encoding='utf-8-sig', newline='') as f:
@@ -22,6 +32,18 @@ for category, filename, title in [('words', 'words.csv', '课文'), ('poems', 'p
                 raise ValueError(f'{filename}: {item_id} 的汉字和词语不能同时为空')
             if row['年级'] not in ['一年级','二年级','三年级','四年级','五年级','六年级'] or row['学期'] not in ['上册','下册']:
                 raise ValueError(f'{filename}: {item_id} 的年级或学期不正确')
+            if category == 'words':
+                check_pinyin(row.get('汉字', ''), row.get('汉字拼音', ''), f'{item_id} 汉字')
+                terms = row.get('词语', '').split('|') if row.get('词语', '') else []
+                pronunciation = row.get('词语拼音', '')
+                if pronunciation.strip():
+                    groups = pronunciation.split('|')
+                    if len(groups) != len(terms):
+                        raise ValueError(f'{item_id}: 词语和拼音分组数量不一致')
+                    for term, py in zip(terms, groups):
+                        check_pinyin(term, py, f'{item_id} 词语 {term}')
+            else:
+                check_pinyin(row.get('正文', ''), row.get('正文拼音', ''), f'{item_id} 正文')
             seen.add(item_id)
             routes.append((category, parts))
 for category in ('words', 'poems'):
