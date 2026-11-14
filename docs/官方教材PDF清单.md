@@ -23,6 +23,10 @@
 | [六年级上册](../教材/官方PDF/六年级上册.pdf) | [平台条目](https://basic.smartedu.cn/tchMaterial/detail?contentType=assets_document&contentId=2e3dc199-9c42-486b-bbee-7731bd0ee227&catalogType=tchMaterial&subCatalog=dzjc) | （根据2022年版课程标准修订）义务教育教科书·语文六年级上册 | 138 | 20472762 | `e148a13518a9f081d1faa296c88f349ebceb81d426aa3d357958e93cbe752bd4` | 无 |
 | [六年级下册](../教材/官方PDF/六年级下册.pdf) | [平台条目](https://basic.smartedu.cn/tchMaterial/detail?contentType=assets_document&contentId=06422d77-21f1-45c3-b409-fa2947eee424&catalogType=tchMaterial&subCatalog=dzjc) | 义务教育教科书·语文六年级下册 | 130 | 14097056 | `878f8d7fba64b1f1277be9a5729952ecccbe1cb2c4ba135f9eb668724d20a683` | 有 |
 
+## 远程验收
+
+2026-11-14 已从指定 GitHub 仓库重新克隆提交 `5ea2839b904d8eddf65dcc998360779c24645ebe`，逐份读取 12 个远程 PDF 对象；字节数和 SHA-256 均与上表一致，12/12 通过。
+
 ## 阅读器显示的原文件地址
 
 地址用于记录实际来源，不包含登录令牌；直接打开是否可访问取决于平台授权。
