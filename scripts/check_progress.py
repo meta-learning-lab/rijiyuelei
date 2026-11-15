@@ -46,6 +46,10 @@ for category, rows in (("w", words), ("p", poems)):
    states = row_states[(category, rid)]
    if states["未核对"] or states["缺失或无法确定"]:
     errors.append((category, rid, "CSV 标记已核对，但逐项记录仍有未确认音节", dict(states)))
+   if row["核对状态"].startswith("已核对，有分歧") and not states["已核对，有分歧"]:
+    errors.append((category, rid, "CSV 标记有分歧，但逐项记录未标出对应字位", dict(states)))
+   if row["核对状态"].startswith("已核对：") and states["已核对，有分歧"]:
+    errors.append((category, rid, "逐项记录有分歧，但 CSV 行未标记", dict(states)))
 expected = sum(len(re.findall(r"[\u3400-\u9fff]", row["汉字"] + row["词语"])) for row in words.values())
 expected += sum(len(re.findall(r"[\u3400-\u9fff]", row["正文"])) for row in poems.values())
 if errors or len(seen) > expected:
