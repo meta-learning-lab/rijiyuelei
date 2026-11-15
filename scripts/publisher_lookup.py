@@ -72,9 +72,9 @@ def lookup(word, *, max_pages=5, interval=1, getter=fetch):
                 pronunciation = entry.get('phoneticTranscription')
                 if not entry_id or not pronunciation:
                     raise ValueError('Exact match lacks ID or pronunciation')
-                matches[entry_id] = {
-                    'id': entry_id, 'pinyin': pronunciation,
-                    'summary': text(entry.get('summaryMobile')),
+                summary = text(entry.get('summaryPc') or entry.get('summaryMobile'))
+                matches[(entry_id, pronunciation, summary)] = {
+                    'id': entry_id, 'pinyin': pronunciation, 'summary': summary,
                     'detail_url': 'https://bjzs.vdict.com.cn/SY/detail/' + entry_id,
                 }
         if page >= total_pages:

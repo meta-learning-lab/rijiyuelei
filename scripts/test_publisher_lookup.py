@@ -21,6 +21,23 @@ class PublisherTests(unittest.TestCase):
         self.assertTrue(result['search_complete'])
         self.assertEqual([e['pinyin'] for e in result['entries']], ['háng', 'xíng'])
 
+    def test_prefers_desktop_summary_and_falls_back_to_mobile(self):
+        response = {'code': 200, 'totalPage': 1, 'books': [{'bookId': 2, 'items': [
+            {'uuid': '1', 'name': '词', 'phoneticTranscription': 'cí',
+             'summaryPc': '较完整的释义', 'summaryMobile': '较短释义'},
+            {'uuid': '2', 'name': '词', 'phoneticTranscription': 'cì',
+             'summaryMobile': '移动版释义'}]}]}
+        entries = publisher.lookup('词', getter=lambda _: response)['entries']
+        self.assertEqual([entry['summary'] for entry in entries], ['较完整的释义', '移动版释义'])
+
+    def test_preserves_distinct_summaries_for_same_entry(self):
+        response = {'code': 200, 'totalPage': 1, 'books': [{'bookId': 2, 'items': [
+            {'uuid': '1', 'name': '机灵', 'phoneticTranscription': 'jī·ling', 'summaryPc': '聪明伶俐'},
+            {'uuid': '1', 'name': '机灵', 'phoneticTranscription': 'jī·ling', 'summaryPc': '同激灵'},
+            {'uuid': '1', 'name': '机灵', 'phoneticTranscription': 'jī·ling', 'summaryPc': '同激灵'}]}]}
+        entries = publisher.lookup('机灵', getter=lambda _: response)['entries']
+        self.assertEqual([e['summary'] for e in entries], ['聪明伶俐', '同激灵'])
+
     def test_truncated_search_and_missing_results(self):
         get = lambda _: {'code': 200, 'totalPage': 2, 'books': []}
         result = publisher.lookup('词', max_pages=1, getter=get)
