@@ -29,7 +29,7 @@
 
 链接格式为 `/words/ID/年级/学期/课文/` 或 `/poems/ID/年级/学期/标题/`。ID 用于识别条目，名称、年级或学期变更会改变完整路径；静态页面不会自动保留旧路径。
 
-正文默认使用霞鹜文楷 GB Regular v1.530；卡片标题右侧的按钮可切换寒蝉书体·龙藏 Regular v3.500，缺字回退至霞鹜文楷 GB。两款字体由原版转换为 WOFF2，字形未修改；许可分别见 `dist/assets/fonts/LXGWWenKaiGB-OFL.txt` 和 `dist/assets/fonts/ChillCalligraphy-OFL.txt`。字形未对教材逐字验证，采样及局限见 [字体采样对照](docs/字体采样对照.md)。
+正文默认使用霞鹜文楷 GB Regular v1.530；卡片标题右侧的按钮可切换寒蝉书体·龙藏 Regular v3.500，缺字回退至霞鹜文楷 GB；选择保存在当前浏览器本地，字词与诗词共用。两款字体由原版转换为 WOFF2，字形未修改；许可分别见 `dist/assets/fonts/LXGWWenKaiGB-OFL.txt` 和 `dist/assets/fonts/ChillCalligraphy-OFL.txt`。字形未对教材逐字验证，采样及局限见 [字体采样对照](docs/字体采样对照.md)。
 
 ### 参考毛笔字体
 
