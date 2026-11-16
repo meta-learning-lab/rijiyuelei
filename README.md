@@ -29,4 +29,4 @@
 
 链接格式为 `/words/ID/年级/学期/课文/` 或 `/poems/ID/年级/学期/标题/`。ID 用于识别条目，名称、年级或学期变更会改变完整路径；静态页面不会自动保留旧路径。
 
-正文使用随站提供的霞鹜文楷 GB Regular，基于 v1.530 原版字体转换为 WOFF2，字形未修改；SIL OFL 1.1 许可见 `dist/assets/fonts/LXGWWenKaiGB-OFL.txt`。字体作者提示该字体未必适合教材、少儿读物和字帖；采样结果及局限见 [字体采样对照](docs/字体采样对照.md)。
+正文使用猫啃硬笔楷书简体版 0.20，缺字自动回退至霞鹜文楷 GB Regular v1.530。两套字体均由原版转换为 WOFF2，字形未修改；许可分别见 `dist/assets/fonts/Maoken-OFL.txt` 和 `dist/assets/fonts/LXGWWenKaiGB-OFL.txt`。字体字形未对教材逐字验证；霞鹜文楷 GB 的历史采样及局限见 [字体采样对照](docs/字体采样对照.md)。
