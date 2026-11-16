@@ -29,4 +29,14 @@
 
 链接格式为 `/words/ID/年级/学期/课文/` 或 `/poems/ID/年级/学期/标题/`。ID 用于识别条目，名称、年级或学期变更会改变完整路径；静态页面不会自动保留旧路径。
 
-正文试用演示春风楷，缺字回退至霞鹜文楷 GB Regular v1.530；字体由原版转换为 WOFF2，字形未修改。许可分别见 `dist/assets/fonts/Slidefont-OFL.txt` 和 `dist/assets/fonts/LXGWWenKaiGB-OFL.txt`。字体字形未对教材逐字验证；此前霞鹜字体采样及局限见 [字体采样对照](docs/字体采样对照.md)。
+正文使用霞鹜文楷 GB Regular v1.530，优先保证字形和间架结构清晰；字体由原版转换为 WOFF2，字形未修改，许可见 `dist/assets/fonts/LXGWWenKaiGB-OFL.txt`。字形未对教材逐字验证，采样及局限见 [字体采样对照](docs/字体采样对照.md)。
+
+### 参考毛笔字体
+
+以下是调研和试用过的开源毛笔风格字体，供欣赏与后续比较；字体字形未对教材逐字验证。
+
+- [马善政毛笔楷书](https://github.com/googlefonts/mashanzheng)：SIL OFL 1.1；曾在网站试用。
+- [演示秋鸿楷、演示春风楷、演示悠然小楷](https://github.com/maoken-fonts/slidefont)：SIL OFL 1.1；三款均曾在网站试用。
+- [玄冬楷书](https://github.com/Skr-ZERO/Xuandong-Kaishu)：SIL OFL 1.1；基于马善政毛笔楷书扩展。
+- [寒蝉书体·春秋及龙藏](https://github.com/Warren2060/ChillCalligraphy)：SIL OFL 1.1；春秋基于演示春风楷和演示秋鸿楷扩展。
+- [漓雨手书](https://github.com/InkPantherType/LiyuShoushu)：SIL OFL 1.1；开发预览版，部分字形由 AI 辅助生成，字形仍在优化。
