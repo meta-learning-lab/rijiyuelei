@@ -29,4 +29,4 @@
 
 链接格式为 `/words/ID/年级/学期/课文/` 或 `/poems/ID/年级/学期/标题/`。ID 用于识别条目，名称、年级或学期变更会改变完整路径；静态页面不会自动保留旧路径。
 
-正文试用马善政毛笔楷书，缺字回退至霞鹜文楷 GB Regular v1.530；字体由原版转换为 WOFF2，字形未修改。许可分别见 `dist/assets/fonts/MaShanZheng-OFL.txt` 和 `dist/assets/fonts/LXGWWenKaiGB-OFL.txt`。字体字形未对教材逐字验证；此前霞鹜字体采样及局限见 [字体采样对照](docs/字体采样对照.md)。
+正文试用演示悠然小楷，缺字回退至霞鹜文楷 GB Regular v1.530；字体由原版转换为 WOFF2，字形未修改。许可分别见 `dist/assets/fonts/Slidefont-OFL.txt` 和 `dist/assets/fonts/LXGWWenKaiGB-OFL.txt`。字体字形未对教材逐字验证；此前霞鹜字体采样及局限见 [字体采样对照](docs/字体采样对照.md)。
